@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    /*
+    | The Guardian Open Platform — International News (section environment).
+    | Free key: https://open-platform.theguardian.com/access/
+    */
+    'guardian' => [
+        'key' => env('GUARDIAN_API_KEY'),
+    ],
+
 ];

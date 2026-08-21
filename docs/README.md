@@ -5,7 +5,8 @@
 ## Domínio e rotas
 
 - [domain.md](domain.md) — regras de negócio: auth (Fase 1) e fórum (Fase 2).
-- [api.md](api.md) — tabela de rotas web/Inertia (fórum, auth, middleware).
+- [api.md](api.md) — tabela de rotas web/Inertia (home, notícias, fórum, auth).
+- [news-sources.md](news-sources.md) — RSS brasileiros, Guardian, cache e página `/news/{id}`.
 
 ## Ambiente e operação
 
@@ -15,6 +16,7 @@
 
 ## Histórico
 
+- [changelog/2026-08-21-home-news.md](changelog/2026-08-21-home-news.md) — Home com RSS + Guardian e leitura interna.
 - [changelog/2026-08-21-forum-domain.md](changelog/2026-08-21-forum-domain.md) — Fase 2: domínio do fórum.
 - [changelog/2026-08-21-auth.md](changelog/2026-08-21-auth.md) — Fase 1: autenticação Fortify.
 - [changelog/2026-08-21-bootstrap.md](changelog/2026-08-21-bootstrap.md) — Fase 0: bootstrap local.

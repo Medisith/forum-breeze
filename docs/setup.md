@@ -164,6 +164,16 @@ O Fortify aplica **5 tentativas de login por minuto** por par `email|IP` (chave 
 
 Teste automatizado relacionado: `php artisan test --filter=test_users_are_rate_limited`.
 
+## Smoke test — Home e notícias
+
+1. Com Redis e MySQL ativos, abra [http://localhost:8000](http://localhost:8000).
+2. As seções brasileiras devem listar itens dos RSS da Agência Brasil (meio ambiente / social).
+3. Clique numa notícia → URL `/news/{id}` no **próprio site** (não redireciona direto para a Agência Brasil).
+4. Painel **International News**: exige `GUARDIAN_API_KEY` no `.env`. Sem a key, o painel mostra aviso vazio; as RSS BR continuam funcionando.
+5. Opcional: `php tools\probe-news.php` e `php tools\probe-news-show.php`.
+
+Detalhes: [news-sources.md](news-sources.md).
+
 ## Backup local (manual)
 
 Ainda não há rotina automática. Dump pontual:

@@ -3,10 +3,15 @@
 use App\Http\Controllers\Forum\PostController;
 use App\Http\Controllers\Forum\TopicController;
 use App\Http\Controllers\Forum\VoteController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::inertia('/', 'welcome')->name('home');
+Route::get('/', HomeController::class)->name('home');
+
+Route::get('/news/{id}', [NewsController::class, 'show'])
+    ->where('id', '[a-f0-9]{40}')
+    ->name('news.show');
 
 Route::get('/forum', [TopicController::class, 'index'])->name('forum.index');
 

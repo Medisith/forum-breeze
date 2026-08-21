@@ -31,10 +31,15 @@ Middleware global do grupo `web`: sessão, CSRF, cookies.
 
 | Método | Rota | Nome | Middleware | Descrição |
 | --- | --- | --- | --- | --- |
-| GET | `/` | `home` | — | Página inicial (`welcome`) |
+| GET | `/` | `home` | — | Home Inertia (`welcome`) com `feed` (RSS BR + International News) |
+| GET | `/news/{id}` | `news.show` | — | Leitura interna do artigo em cache (`News/ShowPage`); `{id}` = sha1 40 hex |
 | GET | `/dashboard` | `dashboard` | `auth`, `verified` | Dashboard Inertia |
 
 Rotas de settings em `routes/settings.php` (`profile.*`, `security.*`, `appearance.edit`) — middleware `auth` / `verified` conforme a rota.
+
+## Notícias (servidor)
+
+Não há REST público de notícias nesta fase. O agregador (`App\Services\News\NewsAggregator`) roda no request da home (com cache Redis) e no `news.show` via catálogo. Detalhes: [news-sources.md](news-sources.md).
 
 ## Validação (POST fórum)
 
