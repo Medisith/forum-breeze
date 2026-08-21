@@ -6,6 +6,7 @@ Stack local: Laravel 13, Inertia + React + TypeScript, Vite, Tailwind CSS v4, My
 
 ## Changelog
 
+- **2026-08-21** — [Deploy VPS /pei2](docs/deploy-vps.md): suporte a `APP_PATH_PREFIX` (rotas `/pei2`, `/pei2/forum`, …) sem Docker.
 - **2026-08-21** — [Home com notícias](docs/changelog/2026-08-21-home-news.md): 3 RSS Agência Brasil nas seções da home, The Guardian no painel **International News**, leitura interna em `/news/{id}`, cache Redis 45 min. Ver [docs/news-sources.md](docs/news-sources.md).
 - **2026-08-21** — [Fórum Fase 2](docs/changelog/2026-08-21-forum-domain.md): entidades do fórum (categorias, tópicos, posts, votos), leitura pública / escrita autenticada, toggle de voto, seed demo e rotas Inertia documentadas em `domain.md` e `api.md`.
 - **2026-08-21** — [Auth Fase 1](docs/changelog/2026-08-21-auth.md): documentação de register/login/logout (bcrypt, sessão, remember me, rate limit), smoke auth em setup e teste de hash no cadastro.

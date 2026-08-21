@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { useAppearance } from '@/hooks/use-appearance';
-import { dashboard, login, logout, register } from '@/routes';
+import { dashboard, home, login, logout, register } from '@/routes';
 
 type AuthUser = {
     name: string;
@@ -68,7 +68,7 @@ export function HomeNavbar({ children }: { children?: ReactNode }) {
     return (
         <header className="border-border bg-background/80 sticky top-0 z-10 border-b backdrop-blur">
             <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
-                <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Home">
+                <Link href={home()} className="flex shrink-0 items-center gap-2" aria-label="Home">
                     <span className="bg-primary text-primary-foreground flex size-7 items-center justify-center rounded-md">
                         <Leaf className="size-4" aria-hidden="true" />
                     </span>

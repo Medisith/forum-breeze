@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { HomeFooter } from '@/components/home/HomeFooter';
 import { HomeNavbar } from '@/components/home/HomeNavbar';
 import { Button } from '@/components/ui/button';
+import { home } from '@/routes';
 
 type Article = {
     id: string;
@@ -48,7 +49,7 @@ export default function ShowPage({ article }: Props) {
 
             <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">
                 <Button variant="ghost" size="sm" className="mb-6 -ml-2" asChild>
-                    <Link href="/">
+                    <Link href={home()}>
                         <ArrowLeft className="size-4" aria-hidden="true" />
                         Voltar à home
                     </Link>
@@ -98,7 +99,7 @@ export default function ShowPage({ article }: Props) {
                             </a>
                         </Button>
                         <Button variant="outline" asChild>
-                            <Link href="/">Voltar</Link>
+                            <Link href={home()}>Voltar</Link>
                         </Button>
                     </div>
                 </article>

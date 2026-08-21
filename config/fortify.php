@@ -73,7 +73,10 @@ return [
     |
     */
 
-    'home' => '/forum',
+    'home' => '/'.trim(implode('/', array_filter([
+        trim((string) env('APP_PATH_PREFIX', ''), '/'),
+        'forum',
+    ])), '/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +89,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => trim((string) env('APP_PATH_PREFIX', ''), '/'),
 
     'domain' => null,
 

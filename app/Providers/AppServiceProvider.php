@@ -5,6 +5,7 @@ namespace App\Providers;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -24,6 +25,22 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->configureDefaults();
+        $this->configureUrlGenerator();
+    }
+
+    /**
+     * Root URL com path (ex.: https://technologyhm.com.br/pei2) para links/assets.
+     */
+    protected function configureUrlGenerator(): void
+    {
+        $root = rtrim((string) config('app.url'), '/');
+        if ($root !== '') {
+            URL::forceRootUrl($root);
+        }
+
+        if (str_starts_with($root, 'https://')) {
+            URL::forceScheme('https');
+        }
     }
 
     /**

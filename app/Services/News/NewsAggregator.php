@@ -152,7 +152,7 @@ class NewsAggregator
 
         $internationalForHome = array_map(
             fn (array $item) => array_merge($item, [
-                'path' => '/news/'.$item['id'],
+                'path' => $this->appPath('news/'.$item['id']),
             ]),
             array_slice($international, 0, 12),
         );
@@ -264,7 +264,7 @@ class NewsAggregator
                 'symbol' => Str::upper(Str::limit(Str::slug((string) $item['source']), 8, '')),
                 'value_label' => $this->formatWhen($item['published_at'] ?? null),
                 'change_pct' => 0.0,
-                'url' => '/news/'.$item['id'],
+                'url' => $this->appPath('news/'.$item['id']),
             ];
         }, $items);
     }
@@ -289,11 +289,20 @@ class NewsAggregator
                 'metric_a' => (string) $item['source'],
                 'metric_b' => $this->formatWhen($item['published_at'] ?? null),
                 'updated_at' => $this->formatTime($item['published_at'] ?? null),
-                'href' => '/news/'.$item['id'],
+                'href' => $this->appPath('news/'.$item['id']),
             ];
         }
 
         return $rows;
+    }
+
+    /** Path absoluto da app com prefixo opcional (ex.: /pei2/news/...). */
+    private function appPath(string $path): string
+    {
+        $prefix = trim((string) config('app.path_prefix'), '/');
+        $path = trim($path, '/');
+
+        return '/'.trim(($prefix !== '' ? $prefix.'/' : '').$path, '/');
     }
 
     private function formatWhen(mixed $iso): string
