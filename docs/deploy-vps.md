@@ -9,7 +9,18 @@
 | Login | `https://technologyhm.com.br/pei2/login` |
 | Notícia | `https://technologyhm.com.br/pei2/news/{id}` |
 
-Prefixo configurável: `APP_PATH_PREFIX=pei2` + `APP_URL=https://technologyhm.com.br/pei2`.
+Prefixo: `APP_PATH_PREFIX=pei2`.
+
+**Importante:** com prefixo nas rotas, `APP_URL` é só o host (sem `/pei2`):
+
+```env
+APP_URL=https://technologyhm.com.br
+APP_PATH_PREFIX=pei2
+ASSET_URL=https://technologyhm.com.br/pei2
+SESSION_PATH=/pei2
+```
+
+Se `APP_URL` incluir `/pei2` junto com `APP_PATH_PREFIX`, os links viram `/pei2/pei2` (404).
 
 ## Servidor
 

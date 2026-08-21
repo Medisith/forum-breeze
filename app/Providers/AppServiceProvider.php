@@ -29,11 +29,21 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Root URL com path (ex.: https://technologyhm.com.br/pei2) para links/assets.
+     * Root da aplicação para geração de URLs.
+     *
+     * Com APP_PATH_PREFIX=pei2 as rotas já incluem /pei2. O APP_URL deve ser só
+     * o host (https://technologyhm.com.br). Se APP_URL vier com /pei2 no final,
+     * removemos para não gerar /pei2/pei2 (404).
      */
     protected function configureUrlGenerator(): void
     {
         $root = rtrim((string) config('app.url'), '/');
+        $prefix = trim((string) config('app.path_prefix'), '/');
+
+        if ($prefix !== '' && str_ends_with($root, '/'.$prefix)) {
+            $root = substr($root, 0, -strlen('/'.$prefix));
+        }
+
         if ($root !== '') {
             URL::forceRootUrl($root);
         }
