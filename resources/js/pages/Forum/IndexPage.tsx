@@ -1,7 +1,8 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import { Plus } from 'lucide-react';
+import { Home, Plus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { home } from '@/routes';
 import { index as forumIndex } from '@/routes/forum';
 import { create, show } from '@/routes/forum/topics';
 import type { Auth } from '@/types';
@@ -56,6 +57,12 @@ export default function IndexPage({ topics, categories, filters }: Props) {
             <div className="flex flex-col gap-6 p-4">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
+                        <Button variant="ghost" size="sm" className="-ml-2 mb-2" asChild>
+                            <Link href={home()}>
+                                <Home className="size-4" aria-hidden="true" />
+                                Voltar à home
+                            </Link>
+                        </Button>
                         <h1 className="text-2xl font-semibold">Fórum Sustentável</h1>
                         <p className="mt-1 text-sm text-muted-foreground">
                             Discussões sobre meio ambiente e sustentabilidade.
@@ -164,6 +171,10 @@ export default function IndexPage({ topics, categories, filters }: Props) {
 
 IndexPage.layout = {
     breadcrumbs: [
+        {
+            title: 'Início',
+            href: home(),
+        },
         {
             title: 'Fórum',
             href: forumIndex(),

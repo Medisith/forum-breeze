@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import { index as forumIndex } from '@/routes/forum';
-import { login } from '@/routes';
+import { home, login } from '@/routes';
 import { store as storePost } from '@/routes/forum/posts';
 import { vote } from '@/routes/forum/topics';
 import type { Auth } from '@/types';
@@ -86,13 +86,24 @@ export default function ShowPage({ topic, userHasVoted }: Props) {
         <>
             <Head title={topic.title} />
             <div className="mx-auto max-w-3xl p-4">
-                <Link
-                    href={forumIndex()}
-                    className="mb-4 inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-                >
-                    <ArrowLeft className="size-4" />
-                    Voltar ao fórum
-                </Link>
+                <div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
+                    <Link
+                        href={home()}
+                        className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground"
+                    >
+                        Início
+                    </Link>
+                    <span className="text-muted-foreground/50" aria-hidden="true">
+                        /
+                    </span>
+                    <Link
+                        href={forumIndex()}
+                        className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground"
+                    >
+                        <ArrowLeft className="size-4" />
+                        Voltar ao fórum
+                    </Link>
+                </div>
 
                 <article className="rounded-lg border p-6">
                     <div className="mb-4 flex flex-wrap items-start justify-between gap-4">
@@ -215,6 +226,10 @@ export default function ShowPage({ topic, userHasVoted }: Props) {
 
 ShowPage.layout = {
     breadcrumbs: [
+        {
+            title: 'Início',
+            href: home(),
+        },
         {
             title: 'Fórum',
             href: forumIndex(),

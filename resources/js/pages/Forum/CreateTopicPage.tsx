@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { home } from '@/routes';
 import { index as forumIndex } from '@/routes/forum';
 import { create, show, store } from '@/routes/forum/topics';
 
@@ -173,6 +174,10 @@ export default function CreateTopicPage({ categories, topicTypes }: Props) {
 
 CreateTopicPage.layout = {
     breadcrumbs: [
+        {
+            title: 'Início',
+            href: home(),
+        },
         {
             title: 'Fórum',
             href: forumIndex(),
